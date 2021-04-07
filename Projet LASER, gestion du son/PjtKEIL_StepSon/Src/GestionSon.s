@@ -5,6 +5,7 @@
 	EXPORT timer_callback
 	EXPORT Compteur
 	IMPORT Son
+	IMPORT LongueurSon
 
 ; ====================== zone de réservation de données,  ======================================
 ;Section RAM (read only) :
@@ -30,6 +31,12 @@ timer_callback proc
 	ldr r3, =Compteur
 	ldr r2, [r3]
 	
+	ldr r7, =LongueurSon
+	ldr r7, [r7]
+	
+	cmp r2, r7
+	beq fin
+	
 	ldrsh r0, [r1,r2, LSL#1]
 	add r0, #32768
 	mov r6, #91
@@ -40,6 +47,8 @@ timer_callback proc
 	
 	add r2, #1  ;*Compteur + 1
 	str r2, [r3] ;Compteur++ 
+	
+fin
 	
 	pop {r4-r11,lr}
 	bx lr
