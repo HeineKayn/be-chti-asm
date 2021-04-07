@@ -3,6 +3,7 @@
 		
 	EXPORT SortieSon
 	EXPORT timer_callback
+	EXPORT Compteur
 	IMPORT Son
 
 ; ====================== zone de réservation de données,  ======================================
@@ -37,8 +38,8 @@ timer_callback proc
 	ldr r5, =SortieSon
 	strh r0, [r5]
 	
-	add r2, #1
-	str r3, [r2]
+	add r2, #1  ;*Compteur + 1
+	str r2, [r3] ;Compteur++ 
 	
 	pop {r4-r11,lr}
 	bx lr
