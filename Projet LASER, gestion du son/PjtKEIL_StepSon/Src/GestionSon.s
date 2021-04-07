@@ -51,6 +51,9 @@ timer_callback proc
 	add r2, #1  ;*Compteur + 1
 	str r2, [r3] ;Compteur++ 
 	
+	PWM_Set_Value_TIM3_Ch3(r0)
+	
+	
 fin
 	
 	pop {r4-r11,lr}
