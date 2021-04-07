@@ -1,0 +1,161 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 THUMB
+    3 00000000         
+    4 00000000                 EXPORT           SortieSon
+    5 00000000                 EXPORT           timer_callback
+    6 00000000                 IMPORT           Son
+    7 00000000         
+    8 00000000         ; ====================== zone de réservation de données,
+                         ======================================
+    9 00000000         ;Section RAM (read only) :
+   10 00000000                 area             mesdata,data,readonly
+   11 00000000         
+   12 00000000         
+   13 00000000         ;Section RAM (read write):
+   14 00000000                 area             maram,data,readwrite
+   15 00000000         
+   16 00000000         
+   17 00000000 00 00   SortieSon
+                               DCW              0
+   18 00000002 00 00 00000000 
+                       Compteur
+                               DCD              0
+   19 00000008         ; ======================================================
+                       =========================================
+   20 00000008         
+   21 00000008         ;Section ROM code (read only) :  
+   22 00000008                 area             moncode,code,readonly
+   23 00000000         ; écrire le code ici  
+   24 00000000         
+   25 00000000         timer_callback
+                               proc
+   26 00000000 E92D 4FF0       push             {r4-r11,lr}
+   27 00000004         
+   28 00000004 4909            ldr              r1, =Son
+   29 00000006 4B0A            ldr              r3, =Compteur
+   30 00000008 681A            ldr              r2, [r3]
+   31 0000000A         
+   32 0000000A F931 0012       ldrsh            r0, [r1,r2, LSL#1]
+   33 0000000E F500 4000       add              r0, #32768
+   34 00000012 F04F 065B       mov              r6, #91
+   35 00000016 FB90 F0F6       sdiv             r0, r0, r6
+   36 0000001A         
+   37 0000001A 4D06            ldr              r5, =SortieSon
+   38 0000001C 8028            strh             r0, [r5]
+   39 0000001E         
+   40 0000001E F102 0201       add              r2, #1
+   41 00000022 6013            str              r3, [r2]
+   42 00000024         
+   43 00000024 E8BD 4FF0       pop              {r4-r11,lr}
+   44 00000028 4770            bx               lr
+   45 0000002A                 endp
+   46 0000002A         
+   47 0000002A                 END
+              00 00 00000000 
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\obj\gestionson.d -o.\obj\gestionson.o -I.\RTE\_Simu -IC:\Program
+data\Keil\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include -IC:\Programdata\Keil\Ar
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+m\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include --predefine="__EVAL SETA 1" --p
+redefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 530" --predefi
+ne="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_RTE_ SETA 1" 
+--list=gestionson.lst Src\GestionSon.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+mesdata 00000000
+
+Symbol: mesdata
+   Definitions
+      At line 10 in file Src\GestionSon.s
+   Uses
+      None
+Comment: mesdata unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Compteur 00000004
+
+Symbol: Compteur
+   Definitions
+      At line 18 in file Src\GestionSon.s
+   Uses
+      At line 29 in file Src\GestionSon.s
+Comment: Compteur used once
+SortieSon 00000000
+
+Symbol: SortieSon
+   Definitions
+      At line 17 in file Src\GestionSon.s
+   Uses
+      At line 4 in file Src\GestionSon.s
+      At line 37 in file Src\GestionSon.s
+
+maram 00000000
+
+Symbol: maram
+   Definitions
+      At line 14 in file Src\GestionSon.s
+   Uses
+      None
+Comment: maram unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+moncode 00000000
+
+Symbol: moncode
+   Definitions
+      At line 22 in file Src\GestionSon.s
+   Uses
+      None
+Comment: moncode unused
+timer_callback 00000000
+
+Symbol: timer_callback
+   Definitions
+      At line 25 in file Src\GestionSon.s
+   Uses
+      At line 5 in file Src\GestionSon.s
+Comment: timer_callback used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+Son 00000000
+
+Symbol: Son
+   Definitions
+      At line 6 in file Src\GestionSon.s
+   Uses
+      At line 28 in file Src\GestionSon.s
+Comment: Son used once
+1 symbol
+344 symbols in table

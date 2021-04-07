@@ -1,8 +1,9 @@
 	PRESERVE8
 	THUMB   
 		
-	EXPORT FlagCligno
+	EXPORT SortieSon
 	EXPORT timer_callback
+	IMPORT Son
 
 ; ====================== zone de réservation de données,  ======================================
 ;Section RAM (read only) :
@@ -25,22 +26,22 @@ timer_callback proc
 	push {r4-r11,lr}
 	
 	ldr r1, =Son
-	ldr r2, =Compteur
-	ldrh r0, [r1,r2, LSL#1]
-	add r0,#32768
-	bl GPIOB_Set
-	b fin
+	ldr r3, =Compteur
+	ldr r2, [r3]
 	
-diffzero
-	mov r2, #0
-	mov r0,#1
-	bl GPIOB_Clear
+	ldrsh r0, [r1,r2, LSL#1]
+	add r0, #32768
+	mov r6, #91
+	sdiv r0, r0, r6
 	
-fin
-	str r2, [r1]
+	ldr r5, =SortieSon
+	strh r0, [r5]
+	
+	add r2, #1
+	str r3, [r2]
+	
 	pop {r4-r11,lr}
 	bx lr
 	endp	
-		
 		
 	END	
