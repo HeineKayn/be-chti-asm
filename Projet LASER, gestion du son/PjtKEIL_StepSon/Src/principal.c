@@ -13,7 +13,7 @@ int main(void)
 
 // Après exécution : le coeur CPU est clocké à 72MHz ainsi que tous les timers
 CLOCK_Configure();
-Timer_1234_Init_ff(TIM4, 3600000);
+Timer_1234_Init_ff(TIM4, 91*72);
 	
 // configuration du Timer 4 en débordement 100ms
 Active_IT_Debordement_Timer(TIM4, 2, timer_callback);	
