@@ -1,10 +1,13 @@
-
-
 #include "DriverJeuLaser.h"
+extern int Compteur;
 void timer_callback(void);
 
+void StartSon(){
+	Compteur = 0;
+}
 
-int main(void)
+
+int InitSon(void)
 {
 
 // ===========================================================================
@@ -25,12 +28,12 @@ Active_IT_Debordement_Timer(TIM4, 2, timer_callback);
 // configuration de PortB.1 (PB1) en sortie push-pull
 // GPIO_Configure(GPIOB, 1, OUTPUT, OUTPUT_PPULL);	
 
-
 //============================================================================	
-	
-	
+
 while	(1)
 	{
+		for(int i = 0; i< 10000000; i++);
+		StartSon();
 	}
 }
 

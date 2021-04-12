@@ -1,0 +1,2 @@
+void StartSon();
+int InitSon();
