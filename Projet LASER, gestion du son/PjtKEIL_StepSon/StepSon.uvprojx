@@ -384,14 +384,14 @@
           <GroupName>Sources</GroupName>
           <Files>
             <File>
-              <FileName>principal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Src\principal.c</FilePath>
-            </File>
-            <File>
               <FileName>GestionSon.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\GestionSon.h</FilePath>
+            </File>
+            <File>
+              <FileName>GestionSon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\GestionSon.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -813,14 +813,14 @@
           <GroupName>Sources</GroupName>
           <Files>
             <File>
-              <FileName>principal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Src\principal.c</FilePath>
-            </File>
-            <File>
               <FileName>GestionSon.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\GestionSon.h</FilePath>
+            </File>
+            <File>
+              <FileName>GestionSon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\GestionSon.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1311,14 +1311,14 @@
           <GroupName>Sources</GroupName>
           <Files>
             <File>
-              <FileName>principal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Src\principal.c</FilePath>
-            </File>
-            <File>
               <FileName>GestionSon.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\GestionSon.h</FilePath>
+            </File>
+            <File>
+              <FileName>GestionSon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Src\GestionSon.c</FilePath>
             </File>
           </Files>
         </Group>
