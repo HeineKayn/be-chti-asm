@@ -6,6 +6,8 @@
 	EXPORT Compteur
 	IMPORT Son
 	IMPORT LongueurSon
+		
+	include Driver/DriverJeuLaser.inc
 
 ; ====================== zone de réservation de données,  ======================================
 ;Section RAM (read only) :
@@ -36,7 +38,7 @@ timer_callback proc
 	
 	; Si dépassement du tableau, on skip le code
 	cmp r2, r7
-	beq fin
+	beq setzero
 	
 	; La valeur était négative -> On la repasse en positive
 	ldrsh r0, [r1,r2, LSL#1]
@@ -48,14 +50,14 @@ timer_callback proc
 	; Actualisation des variables
 	ldr r5, =SortieSon
 	strh r0, [r5]
-	add r2, #1  ;*Compteur + 1
+	add r2, #1  ;Compteur + 1
 	str r2, [r3] ;Compteur++ 
-	
-	PWM_Set_Value_TIM3_Ch3(r0)
-	
+	b fin
+setzero
+	ldr r0,=0
 	
 fin
-	
+	bl PWM_Set_Value_TIM3_Ch3   ; en r0 se trouve le nombre de période avant le retour a 0	
 	pop {r4-r11,lr}
 	bx lr
 	endp	
