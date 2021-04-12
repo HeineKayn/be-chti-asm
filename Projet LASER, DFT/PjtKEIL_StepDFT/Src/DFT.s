@@ -29,6 +29,30 @@
 	AREA Trigo, DATA, READONLY
 ; codage fractionnaire 1.15
 
+Compteur DCD 0
+Total DCD 0
+	
+DFT_ModuleAuCarre proc
+	push {r4-r11,lr}
+	
+	ldr r4, [r2]
+	ldr r3, =Total
+	ldr r5, [r3]
+	
+bouclefor
+	
+	cmp r4
+	bne bouclefor
+	
+	pop {r4-r11,lr}
+	bx lr
+	endp		
+	END	
+
+
+
+
+
 TabCos
 	DCW	32767	;  0 0x7fff  0.99997
 	DCW	32610	;  1 0x7f62  0.99518
