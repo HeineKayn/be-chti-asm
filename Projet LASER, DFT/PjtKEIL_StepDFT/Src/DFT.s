@@ -1,6 +1,8 @@
 	PRESERVE8
 	THUMB   
 		
+	EXPORT DFT_ModuleAuCarre
+		
 
 ; ====================== zone de réservation de données,  ======================================
 ;Section RAM (read only) :
@@ -19,39 +21,53 @@
 		
 ;Section ROM code (read only) :		
 	area    moncode,code,readonly
-; écrire le code ici		
+; écrire le code ici	
 
+Somme proc ; (r0 -> signal, r1 -> k, r2 -> TabCos ou TabSin)
+	push {r4-r11,lr}
+	mov r4, #0 ;compteur
+	mov r5, #0 ;total
+bouclefor
 
-
-
-
-;Section ROM code (read only) :		
-	AREA Trigo, DATA, READONLY
-; codage fractionnaire 1.15
-
-Compteur DCD 0
-Total DCD 0
+	mul r5, r1, r4 ; calcul de p
+	and r5, #63 ; modulo
+	ldr r3, [r2,r5, LSL #1] ; Tab
 	
+	ldr r6, [r0,r4, LSL #1] ; X(n)
+	mul r3, r6				; (Tab) * X(n)
+	add r5, r3
+	
+	cmp r4, #63 ;peut etre registre
+	add r4, #1
+	bne bouclefor
+	
+	mov r0, r5
+	
+	pop {r4-r11,lr}
+	bx lr
+	endp
+
 DFT_ModuleAuCarre proc
 	push {r4-r11,lr}
+	mov r4, #0 ; compteur
+	mov r5, #0 ; total
 	
-	ldr r4, [r2]
-	ldr r3, =Total
-	ldr r5, [r3]
+	mov r11, r0 ; déplace signal dans r11
 	
-bouclefor
+	ldr r2, =TabCos
+	add r5, r0
 	
-	cmp r4
-	bne bouclefor
+	mov r0, r11
+	ldr r2, =TabSin
+	add r5, r0
 	
 	pop {r4-r11,lr}
 	bx lr
 	endp		
-	END	
 
-
-
-
+;Section ROM code (read only) :		
+	AREA Trigo, DATA, READONLY
+; codage fractionnaire 1.15
 
 TabCos
 	DCW	32767	;  0 0x7fff  0.99997
