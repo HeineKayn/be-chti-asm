@@ -27,26 +27,25 @@ Somme proc ; (r0 -> signal, r1 -> k, r2 -> TabCos ou TabSin)
 	push {r4-r11,lr}
 	mov r4, #0 ;compteur
 	mov r5, #0 ;total
-	
 bouclefor
 
-	mul r7, r1, r4 ; calcul de p
-	and r7, #63 ; modulo
-	ldrsh r3, [r2,r7, LSL #1] ; Tab, r3 est au formt 1.15
+	mul r5, r1, r4 ; calcul de p
+	and r5, #63 ; modulo
+	ldrsh r3, [r2,r5, LSL #1] ; Tab, r3 est au formt 1.15
 	
 	ldrsh r6, [r0,r4, LSL #1] ; X(n), r6 est au formt 1.12
 	mul r3, r6				  ; (Tab) * X(n), r3 est au formt 2.27
 	asr r3, #5				  ; format 2.22
-	add r5, r3				  ; r5 est au format 8.22
+	add r5, r3				  ; r5 est au format 2.28
 	
 	add r4, #1
 	cmp r4, #64 ; peut etre registre
 	bne bouclefor
 	
 	mov r0, r5
-	asr r0, #15 ; on prépare le carré (donc on met au format 8.7)
-	mul r0, r0	; format 16.14
-	asr r0, #14
+	asr r0, #15 ; on prépare le carré (donc on met au format 2.13)
+	mul r0, r0	; format 4.26
+	
 	pop {r4-r11,lr}
 	bx lr
 	endp

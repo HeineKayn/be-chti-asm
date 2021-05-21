@@ -1,8 +1,9 @@
 #include "DriverJeuLaser.h"
+#include <stdio.h>
 
 int DFT_ModuleAuCarre( short int * Signal64ech, char k);
 
-int Transformee[64];
+float Transformee[64];
 extern short int LeSignal[64];
 	
 
@@ -17,6 +18,7 @@ int main(void)
 CLOCK_Configure();
 for (int i=0; i<64; i++){
 	Transformee[i] = DFT_ModuleAuCarre(LeSignal, i);
+	//printf("%d -> %f \n",i,Transformee[i]);
 }
 
 
