@@ -1,9 +1,9 @@
 --cpu Cortex-M3
-".\obj\principal.o"
+".\obj\gestionson.o"
 ".\obj\startup-rvds.o"
 ".\Driver\DriverJeuLaser.lib"
 ".\obj\bruitverre.o"
-".\obj\gestionson.o"
+".\obj\gestionson_1.o"
 --library_type=microlib --strict --scatter ".\Obj\StepSon.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -1,4 +1,5 @@
 #include "DriverJeuLaser.h"
+#include "GestionSon.h"
 #include <stdio.h>
 
 int DFT_ModuleAuCarre( short int * Signal64ech, char k);
@@ -29,6 +30,7 @@ void timer_callback(void){
 		
 		if (cpt[i] > seuil){
 			score[i] += 1;
+			StartSon();
 			cpt[i] = 0;
 		}
 	}

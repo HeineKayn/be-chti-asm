@@ -394,15 +394,20 @@
               <FilePath>.\Src\DFT.s</FilePath>
             </File>
             <File>
-              <FileName>Signal.asm</FileName>
+              <FileName>GestionSon.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Src\Signal.asm</FilePath>
+              <FilePath>.\Src\GestionSon.s</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Sys</GroupName>
           <Files>
+            <File>
+              <FileName>Signal.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Src\Signal.asm</FilePath>
+            </File>
             <File>
               <FileName>startup-rvds.s</FileName>
               <FileType>2</FileType>
@@ -813,15 +818,20 @@
               <FilePath>.\Src\DFT.s</FilePath>
             </File>
             <File>
-              <FileName>Signal.asm</FileName>
+              <FileName>GestionSon.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Src\Signal.asm</FilePath>
+              <FilePath>.\Src\GestionSon.s</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Sys</GroupName>
           <Files>
+            <File>
+              <FileName>Signal.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Src\Signal.asm</FilePath>
+            </File>
             <File>
               <FileName>startup-rvds.s</FileName>
               <FileType>2</FileType>
@@ -1301,15 +1311,20 @@
               <FilePath>.\Src\DFT.s</FilePath>
             </File>
             <File>
-              <FileName>Signal.asm</FileName>
+              <FileName>GestionSon.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Src\Signal.asm</FilePath>
+              <FilePath>.\Src\GestionSon.s</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Sys</GroupName>
           <Files>
+            <File>
+              <FileName>Signal.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Src\Signal.asm</FilePath>
+            </File>
             <File>
               <FileName>startup-rvds.s</FileName>
               <FileType>2</FileType>
